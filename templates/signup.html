@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<h2 style="padding-left: 140px;">SignUp</h2>
+    <form method="POST" id="CreateUserForm">{% csrf_token %}
+	    <div class="form-group">
+	      {{ form.username }}
+	    </div>
+	    {% if form.username.errors %}
+		    <div class="alert alert-danger" style="width: 400px;">
+		       {{form.username.errors}}
+		    </div>
+	    {% endif %}
+	    <div class="form-group">
+	      {{ form.email_id }}
+	    </div>
+        {% if form.email_id.errors %}
+    	    <div class="alert alert-danger" style="width: 400px;">
+    	       {{form.email_id.errors}}
+    	    </div>
+        {% endif %}
+	    <div class="form-group">
+	      {{ form.password }}
+	    </div>
+        {% if form.password.errors %}
+    	    <div class="alert alert-danger" style="width: 400px;">
+    	       {{form.password.errors}}
+    	    </div>
+        {% endif %}
+	    <div class="form-group">
+	      {{ form.reenter_password }}
+	    </div>
+        {% if form.reenter_password.errors %}
+    	    <div class="alert alert-danger" style="width: 400px;">
+    	       {{form.reenter_password.errors}}
+    	    </div>
+        {% endif %}
+	    <button type="submit" class="btn btn-success" style="width: 400px;padding:10px;">SignUp</button>
+	</form>
+</div>
+
+{% endblock %}

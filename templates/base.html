@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}
+  <title>Trello</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    #username{
+      width: 400px;
+    }
+    #password{
+      width: 400px;
+    }
+    #reenter_password{
+      width: 400px;
+    }
+    #email_id{
+      width: 400px;
+    }
+    #id_old_password{
+      width: 400px;
+    }
+    #id_new_password1{
+      width: 400px;
+    }
+    #id_new_password2{
+      width: 400px;
+    }
+    body{
+      font-size: 16px;
+    }
+    #serial-number-input {
+      width: 100%; /* Full-width */
+      font-size: 16px; /* Increase font-size */
+      padding: 12px 20px 12px 12px; /* Add some padding */
+      border: 0.8px solid black; /* Add a grey border #ddd or black*/
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+
+    .search-list-btn {
+      width: 100%;
+      font-size: 16px;
+      text-align: left;
+      padding: 12px 20px 12px 12px;
+      border-radius: 10px/100px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .search-list-btn:hover {
+      background-color: #d3d0d0;
+    }
+  </style>
+  {% endblock %}
+</head>
+<body onload="load()">
+  {% block navbar %}
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'category:home' %}" style="color: white;font-size: 24px;">Trello</a>
+      </div>
+      
+      {% if request.user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+          <li style="color: white; padding: 13px 0px 13px 0px;">Hi, {{request.user.username}} |</li>
+          <li>
+            <div class="dropdown" style="padding: 10px;">
+              <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      {% else %}
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'category:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+
+      {% endif %}
+    </div>
+  </nav>
+  <div style="padding-bottom: 65px;"></div>
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
